@@ -24,15 +24,17 @@ let libro4 = {
 
 let libros = [libro1, libro2, libro3, libro4]
 
-let librosTerror = libros.filter((el) => el.genero.includes('terror')) 
+let librosTerror = titulos.filter((el) => el.genero.includes('terror')) 
 console.log(librosTerror)
+
+let nombreLibro = ["el laberinto del fauno", "la mala mujer", "la pareja de a lado", "carbono modificado"]
 
 let eliminarLibro = prompt("Ingresa el libro que deseas eliminar").toLowerCase();
 
-let indice = libros.indexOf(eliminarLibro)
+let indice = nombreLibro.indexOf(eliminarLibro)
 
 if(indice != -1){
-libros.splice(indice,1);
+nombreLibro.splice(indice,1);
 alert(`El libro ${eliminarLibro} fue eliminado`)
 } else {
 alert("INCORRECTO")
