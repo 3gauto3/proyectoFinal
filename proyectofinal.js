@@ -1,43 +1,39 @@
-let libro1 = {
-    titulo: "el laberinto del fauno",
-    autor: "guillermo del toro",
-    genero: "terror",
+class libro {
+    constructor(titulo, autor, precio) {
+        this.titulo = titulo;
+        this.autor = autor;
+    }
 }
 
-let libro2 = {
-    titulo: "la mala mujer",
-    autor: "marc pastor",
-    genero: "terror",
+const libro1 = new libro ("el laberinto del faunio", "guillermo del toro",);
+const libro2 = new libro ("los altisimos", "hugo correa",);
+const libro3 = new libro ("la novia gitana", "caarmen corre",);
+
+let biblioteca = [libro1, libro2, libro3]
+
+
+function mostrarLibros() {
+    let mensaje = ""
+
+    for (let i=0; i<biblioteca.length; i=i+1) { //i=0, 1 y 2
+        mensaje += `título: ${i+1} ${biblioteca[i].titulo}, autor: ${biblioteca[i].autor}.\n\n`
+    }
+    
+    alert(mensaje)
 }
 
-let libro3 = {
-    titulo: "la pareja de a lado",
-    autor: "shari lapena",
-    genero: "policiaco",
-}
+mostrarLibros()
 
-let libro4 = {
-    titulo: "carbono modificado",
-    autor: "richard morgan",
-    genero: "ficcion",
-}
+let respuestaBorrar = prompt("¿Quieres borrar un libro?").toLocaleLowerCase()
 
-let libros = [libro1, libro2, libro3, libro4]
+if (respuestaBorrar == "si") {
+    let respuestaLibroBorrar = prompt("Seleccioná el libro a eliminar")
+    let libroElegido = biblioteca.find( (elemento) => elemento.titulo == respuestaLibroBorrar) // Obtiene el objeto libro que se quiere borrar
+    let indexLibroElegido = biblioteca.indexOf(libroElegido) // Obtiene el índice del libro en el array biblioteca
+    biblioteca.splice(indexLibroElegido, 1)
 
-let librosTerror = titulos.filter((el) => el.genero.includes('terror')) 
-console.log(librosTerror)
-
-let nombreLibro = ["el laberinto del fauno", "la mala mujer", "la pareja de a lado", "carbono modificado"]
-
-let eliminarLibro = prompt("Ingresa el libro que deseas eliminar").toLowerCase();
-
-let indice = nombreLibro.indexOf(eliminarLibro)
-
-if(indice != -1){
-nombreLibro.splice(indice,1);
-alert(`El libro ${eliminarLibro} fue eliminado`)
+    mostrarLibros()
+    
 } else {
-alert("INCORRECTO")
-}
-
-console.log(libros) 
+    alert("Incorrecto")
+ }
